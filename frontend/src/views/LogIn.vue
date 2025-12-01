@@ -68,7 +68,7 @@
   align-items: center;
   }
   .form {
-    background-color: rgb(255, 102, 82);
+    background-color: rgb(32, 32, 32);
     padding: 24px 32px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -118,13 +118,13 @@
     border-radius: 20px;
     border: none;
     cursor: pointer;
-    background-color: rgb(31, 163, 163);
+    background-color: rgb(10, 10, 10);
     color: white;
     font-weight: 600;
   }
   
   button:hover {
     opacity: 0.9;
-    background-color: #163f6f;
+    background-color: rgb(55, 55, 55);
   }
   </style>

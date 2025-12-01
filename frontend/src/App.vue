@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <div id="app">
     <HeaderComponent />
-    <router-view />
+    <main class="content">
+      <router-view />
+    </main>
     <FooterComponent />
   </div>
 </template>
@@ -22,6 +24,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content{
+  flex: 1;
+  overflow-y: auto;
 }
 
 body {

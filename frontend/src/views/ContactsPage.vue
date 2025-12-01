@@ -30,7 +30,7 @@ export default {
 }
 
 .contact-card {
-  background-color: rgb(255, 102, 82);
+  background-color: rgb(32, 32, 32);
   padding: 24px 32px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);

@@ -1,4 +1,4 @@
-/*export default {
+export default {
     user: { authenticated: false },
     authenticated: 
     async function() {
@@ -18,11 +18,11 @@
     }
 
 }
-*/
-export default {
+
+/*export default {
     user: { authenticated: true },
   
     authenticated: async function () {
       return true;
     }
-  }
+  }*/
