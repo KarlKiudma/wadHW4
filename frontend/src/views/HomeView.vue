@@ -1,16 +1,11 @@
 <template>
   <div class="header">
     <div class="container">
-    <button class="logout-button" @click="Logout">Logout</button>
-    </div>
-    <div class="post-list" v-for="post in posts"   :key="post.index">  
+    <button class="logout-button" @click="Logout">Logout</button></div>
+    <div class="post-list" v-for="post in posts" :key="post.id">  
       <div class="post">
-        <div class="post-header">
-          <h3>Title:  {{post.title}} </h3>
-        </div>
-        <div class="post-content">
-          <p>{{post.body}}</p>
-        </div>
+        <small class="post-date">{{ new Date(post.date).toLocaleDateString() }}</small>
+        <p class="post-content">{{ post.content }}</p>
       </div>
     </div>
     <button class="addpost-button"> Add Post</button>
@@ -49,11 +44,13 @@ export default {
     },
   }, 
   mounted() {
-        fetch('https://jsonplaceholder.typicode.com/posts')
-        .then((response) => response.json())
-        .then(data => this.posts = data)
-        .catch(err => console.log(err.message))
-    }
+  fetch("http://localhost:3000/posts")
+    .then(res => res.json())
+    .then(data => {
+      this.posts = data;
+    })
+    .catch(err => console.log(err));
+}
 };
 </script>
 
@@ -67,6 +64,7 @@ export default {
     flex-direction: column;
   }
   .post {
+    position: relative;
     background-color: rgb(32, 32, 32);
     border: 1px solid rgb(70, 70, 70);
     border-radius: 8px;
@@ -80,18 +78,14 @@ export default {
     border-top: 2px dashed rgb(255, 102, 82);
   }
   .post ~ .post {
-    border-top: 2px solid rgb(255, 102, 82);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     padding-top: 20px;
   }
-  .post-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  .post-content {
-    flex-direction: column;
+  .post-date {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 0.8em;
   }
 
   .post-content p {
@@ -136,11 +130,6 @@ export default {
       margin-top: 25px;
     }
 
-    .post-header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 5px;
-    }
     .post-content p {
     font-size: 0.95em;
     line-height: 1.4;
