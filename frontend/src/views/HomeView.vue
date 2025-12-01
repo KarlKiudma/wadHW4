@@ -67,8 +67,8 @@ export default {
     flex-direction: column;
   }
   .post {
-    background-color: rgb(255, 102, 82);
-    border: 1px solid rgb(255, 102, 82);
+    background-color: rgb(32, 32, 32);
+    border: 1px solid rgb(70, 70, 70);
     border-radius: 8px;
     margin: 20px 0;
     padding: 15px;
@@ -104,7 +104,7 @@ export default {
 .addpost-button,
 .delete-button {
   cursor: pointer;
-  background: rgb(31, 163, 163);
+  background: rgb(32, 32, 32);
   border: 0;
   padding: 10px 20px;
   margin-top: 20px;
@@ -117,7 +117,7 @@ export default {
 .logout-button:hover,
 .addpost-button:hover,
 .delete-button:hover {
-  background: #163f6f;
+  background: rgb(10,10,10);
 }
 
   @media (max-width: 600px) {
