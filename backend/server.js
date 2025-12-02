@@ -28,8 +28,10 @@ app.listen(port, () => {
 app.post('/auth/signup', async(req, res) => {
     try {
         const { email, password } = req.body;
+        const existingUser = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
+        if (existingUser.rows.length !== 0) return res.status(409).json({ error: "User already registered" });
 
-        const salt = await bcrypt.genSalt(); //  
+        const salt = await bcrypt.genSalt();  
         const bcryptPassword = await bcrypt.hash(password, salt)
         const authUser = await pool.query( 
             "INSERT INTO users(email, password) values ($1, $2) RETURNING*", [email, bcryptPassword]

@@ -2,7 +2,7 @@ const Pool = require('pg').Pool;
 
 const pool = new Pool({
     user: "postgres",
-    password: "", //password
+    password: "K4rlM4rkus", //password
     database: "testWad",
     host: "localhost",
     port: "5432"
@@ -43,9 +43,10 @@ const createPostsQuery = `
 `;
 
 const init = async () => {
+  //await execute("DROP TABLE posts;")
   await execute(createUsersTblQuery);
   await execute(createPostsTblQuery);
-  await execute(createPostsQuery);
+  //await execute(createPostsQuery);
 };
 
 init();
