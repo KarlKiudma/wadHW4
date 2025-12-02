@@ -100,7 +100,34 @@ app.get('/posts', async (req, res) => {
       );
       res.status(200).json(result.rows);
     } catch (err) {
-      console.error(err.message);
       res.status(500).json({ error: 'Failed to fetch posts' });
     }
   });
+
+app.post('/posts', async (req, res) => {
+    try {
+      const { content } = req.body;
+  
+      if (!content || content.trim() === "") {
+        return res.status(400).json({ error: "Content is required" });
+      }
+  
+      const result = await pool.query(
+        "INSERT INTO posts (content) VALUES ($1) RETURNING id, content, date",
+        [content]
+      );
+  
+      res.status(201).json(result.rows[0]);
+    } catch (err) {
+      res.status(500).json({ error: "Failed to create post" });
+    }
+});
+
+app.delete('/posts', async (req, res) => {
+    try {
+      await pool.query("DELETE FROM posts");
+      res.status(204).send();
+    } catch (err) {
+      res.status(500).json({ error: "Failed to delete posts" });
+    }
+});

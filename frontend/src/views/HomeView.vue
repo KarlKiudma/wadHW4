@@ -8,49 +8,63 @@
         <p class="post-content">{{ post.content }}</p>
       </div>
     </div>
-    <button class="addpost-button"> Add Post</button>
-    <button class="delete-button">Delete All</button>
+    <button class="addpost-button" @click="AddPost">Add Post</button>
+    <button class="delete-button" @click="DeleteAll">Delete All</button>
   </div>
 </template>
 
 <script>
 import auth from "../auth";
+import AddPost from "./AddPost.vue";
 
 export default {
   name: "HomeView",
-  components: {
-  },
-   data: function() {
+
+  data() {
     return {
-    posts:[ ],
-    authResult: auth.authenticated()
-    }
+      posts: [],
+      authResult: auth.authenticated()
+    };
   },
+
   methods: {
     Logout() {
       fetch("http://localhost:3000/auth/logout", {
-          credentials: 'include',  
+        credentials: "include"
       })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        console.log('jwt removed');
-        this.$router.push("/login");
-      })
-      .catch((e) => {
-        console.log(e);
-        console.log("error logout");
-      });
+        .then(res => res.json())
+        .then(() => {
+          this.$router.push("/login");
+        })
+        .catch(err => console.log("Logout error", err));
     },
-  }, 
+
+    fetchPosts() {
+      fetch("http://localhost:3000/posts")
+        .then(res => res.json())
+        .then(data => {
+          this.posts = data;
+        })
+        .catch(err => console.log(err));
+    },
+
+    DeleteAll() {
+      fetch("http://localhost:3000/posts", {
+        method: "DELETE"
+      })
+        .then(() => {
+          this.fetchPosts();
+        })
+        .catch(err => console.log("Delete failed", err));
+    },
+    AddPost(){
+      this.$router.push("/add-post")
+    }
+  },
+
   mounted() {
-  fetch("http://localhost:3000/posts")
-    .then(res => res.json())
-    .then(data => {
-      this.posts = data;
-    })
-    .catch(err => console.log(err));
-}
+    this.fetchPosts();
+  }
 };
 </script>
 
