@@ -3,7 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import SignUp from "../views/SignUp.vue";
 import LogIn from "../views/LogIn.vue";
 import auth from "../auth";
-import AddPost from "@/views/AddPost.vue";
+import AddPost from "../views/AddPost.vue";
 
 
 

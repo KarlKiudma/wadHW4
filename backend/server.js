@@ -96,7 +96,7 @@ app.get('/auth/logout', (req, res) => {
 app.get('/posts', async (req, res) => {
     try {
       const result = await pool.query(
-        'SELECT id, content, date FROM posts ORDER BY date DESC'
+        'SELECT id, content, date FROM posts ORDER BY date ASC'
       );
       res.status(200).json(result.rows);
     } catch (err) {
