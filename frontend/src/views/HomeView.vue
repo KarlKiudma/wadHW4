@@ -3,7 +3,7 @@
     <div class="container">
     <button class="logout-button" @click="Logout">Logout</button></div>
     <div class="post-list" v-for="post in posts" :key="post.id">  
-      <div class="post">
+      <div class="post" @click="openPost(post.id)">
         <small class="post-date">{{ new Date(post.date).toLocaleDateString() }}</small>
         <p class="post-content">{{ post.content }}</p>
       </div>
@@ -59,12 +59,18 @@ export default {
     },
     AddPost(){
       this.$router.push("/add-post")
+    },
+    openPost(id) {
+      this.$router.push(`/post/${id}`);
     }
   },
 
   mounted() {
     this.fetchPosts();
-  }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => vm.fetchPosts());
+  },
 };
 </script>
 
