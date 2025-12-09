@@ -3,11 +3,10 @@
       <div class="form">
         <h3 class="title">Add Post</h3>
   
-        <textarea
-          v-model="content"
-          placeholder="Write your post here..."
-          class="textarea"
-        ></textarea>
+        <div class="post">
+          <label>Body</label>
+          <input type="text" v-model="content"/>
+        </div>
   
         <div class="actions">
           <button class="addpost-button" @click="AddPost">Add Post</button>
@@ -74,50 +73,36 @@
   color: white;
   margin-bottom: 20px;
   }
-  
-  .textarea {
-  width: 100%;
-  min-height: 120px;
-  max-height: 240px;
-  font-size: 1rem;
+
+  .post {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.post label {
+  font-size: 16px;
+  color: white;
+}
+
+.post input {
+  flex: 1;
+  padding: 8px 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
-  resize: vertical;
-  }
-  
-  @media (max-width: 600px) {
-  .textarea {
-    min-height: 90px;
-    max-height: 180px;
-    font-size: 0.95rem;
-  }
-  .form {
-    max-width: 80%;
-  }
-  }
-  
-  @media (min-width: 1000px) {
-  .textarea {
-    min-height: 150px;
-    max-height: 350px;
-    font-size: 1.05rem;
-  }
-  }
-  
-  .actions {
-  margin-top: 16px;
-  display: flex;
-  justify-content: space-between;
-  }
+  box-sizing: border-box;
+}
   
   .addpost-button {
-  padding: 10px 20px;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  background-color: rgb(10, 10, 10);
-  color: white;
-  font-weight: 600;
+    cursor: pointer;
+    background: black;
+    border: 0;
+    padding: 10px 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    color: white;
+    border-radius: 20px;
   }
   
   .addpost-button:hover {
