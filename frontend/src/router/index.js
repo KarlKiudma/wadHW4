@@ -37,7 +37,7 @@ const routes = [{
     {
         path: "/post/:id",
         name: "Post",
-        component: () => import("../views/Post.vue"),
+        component: () => import("../views/EditPost.vue"),
         meta: { requiresAuth: true }
     },
     {
