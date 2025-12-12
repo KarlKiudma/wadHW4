@@ -76,7 +76,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* TAUST JÄÄB TUMEDAKS – EI MUUDA */
   font-family: Arial, sans-serif;
 }
 
@@ -123,7 +122,7 @@ export default {
 .update-button,
 .delete-button {
   cursor: pointer;
-  background-color: black; /* AddPost roheline */
+  background-color: black;
   border: 0;
   padding: 10px 22px;
   margin-top: 20px;
