@@ -66,16 +66,14 @@ export default {
 
 
 <style scoped>
-/* wrapper et kast oleks keskel */
 .wrapper {
   display: flex;
   justify-content: center;
   margin-top: 40px;
 }
 
-/* KAST – sama stiil nagu AddPost */
 .box {
-  background-color: rgb(232, 238, 223); /* hele rohekas taust */
+  background-color: rgb(232, 238, 223);
   padding: 30px 40px;
   border-radius: 12px;
   width: 350px;
@@ -90,7 +88,6 @@ h2 {
   font-weight: 600;
 }
 
-/* Body label + input */
 .row {
   display: flex;
   justify-content: space-between;
@@ -110,7 +107,6 @@ input {
   border: 1px solid #ccc;
 }
 
-/* Nupud – samad nagu AddPost */
 .btn-row {
   display: flex;
   justify-content: center;
